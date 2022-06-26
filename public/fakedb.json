@@ -1,0 +1,20 @@
+[
+    {
+        "id":"1",
+        "name":"Fluride Tratment",
+        "description":"Lorem Ipsum is simply dummy printing and typestetting indust ipsum has been the last",
+        "img":"https://i.ibb.co/wLDVB6G/fluoride.png"       
+    },
+    {
+        "id":"2",
+        "name":"Cavity Filling",
+        "description":"Lorem Ipsum is simply dummy printing and typestetting indust ipsum has been the last",
+        "img":"https://i.ibb.co/pbdCDQt/cavity.png"       
+    },
+    {
+        "id":"3",
+        "name":"Teath Whitening",
+        "description":"Lorem Ipsum is simply dummy printing and typestetting indust ipsum has been the last",
+        "img":"https://i.ibb.co/WPdwTbM/whitening.png"       
+    }
+]
