@@ -21,7 +21,7 @@ const service = {
 
 const Footer = () => {
   return (
-    <Container sx={{ mt: 2, pb: 2 }} style={footerBackground}>
+    <Container sx={{ mt: 3, pb: 2,borderRadius:'10px' }} style={footerBackground}>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={1}>
           <Grid item xs={4} md={4} sm={12}>
@@ -51,7 +51,7 @@ const Footer = () => {
         <Typography>
           Copyright 2022 All Rights Reserved By{" "}
           <span
-            style={{ color: "yellow", fontSize: "22px", fontWeight: "500" }}
+            style={{ color: "green", fontSize: "22px", fontWeight: "500" }}
           >
             Tansen
           </span>
