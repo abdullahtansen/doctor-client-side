@@ -7,6 +7,10 @@ import Register from "./Login/Register/Register";
 import AuthProvider from "./contexts/AuthProvider/AuthProvider";
 import PrivateRoute from "./Login/PrivateRoute/PrivateRoute";
 import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
+import MyProfile from "./Pages/Dashboard/Dashboard/MyProfile/MyProfile";
+import MakeAdmin from "./Pages/Dashboard/Dashboard/MakeAdmin/MakeAdmin";
+import DashBoardHome from "./Pages/Dashboard/Dashboard/DashBoardHome/DashBoardHome";
+import AddDoctor from "./Pages/Dashboard/Dashboard/AddDoctor/AddDoctor";
 
 function App() {
   return (
@@ -26,13 +30,45 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route
-            path="/dashboard"
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        >
+       <Route index element={<MyProfile />} /> 
+           <Route path="makeAdmin" element={<MakeAdmin />} />
+           <Route path="dashboardHome" element={<DashBoardHome />} />
+          <Route path="addDoctor" element={<AddDoctor />} />
+          {/*<Route path="updateProfile" element={<UpdateProfile />} />
+          <Route path="payment/:id" element={<Payment />} />
+          <Route path="manageProducts" element={<ManageProducts />} />
+          <Route
+            path="makeAdmin"
             element={
-              <PrivateRoute>
-                <Dashboard />
-              </PrivateRoute>
+              <RequireAdmin>
+                <MakeAdmin />
+              </RequireAdmin>
             }
           />
+          <Route
+            path="addProduct"
+            element={
+              <RequireAdmin>
+                <AddProduct />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="manageAllOrders"
+            element={
+              <RequireAdmin>
+                <ManageAllOrders />
+              </RequireAdmin>
+            }
+          /> */}
+        </Route>
         </Routes>
       </AuthProvider>
     </div>

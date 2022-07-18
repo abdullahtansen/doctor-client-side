@@ -5,18 +5,12 @@ import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Button} from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const drawerWidth = 200;
 
@@ -36,16 +30,36 @@ function Dashboard(props) {
               <Button variant="contained" color="inherit">Appointment</Button>
             </Link>
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+      <div className="drawer-side">
+        <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
+        <ul className="menu p-4 overflow-y-auto w-50 bg-base-100 text-base-content">
+        <li>
+            <Link to='/dashboard'>My Profile</Link>
+          </li>
+        <>
+            <li>
+            <Link to='/dashboard/dashboardHome'>DashBoard</Link>
+          </li>
+          <li>
+            <Link to='/dashboard/addDoctor'>Add Doctor</Link>
+          </li></>
+          
+         <>
+            <li>
+            <Link to='/dashboard/manageAllOrders'>Manage All Orders</Link>
+          </li>
+          <li>
+            <Link to='/dashboard/addProduct'>Add A Product</Link>
+          </li>
+          <li>
+            <Link to='/dashboard/makeAdmin'>Make Admin</Link>
+          </li>
+          <li>
+            <Link to='/dashboard/manageProducts'>Manage Products</Link>
+          </li>
+          </>
+        </ul>
+      </div>
       </List>
     </div>
   );
@@ -77,6 +91,7 @@ function Dashboard(props) {
             Dashboard
           </Typography>
         </Toolbar>
+      
       </AppBar>
       <Box
         component="nav"
@@ -124,7 +139,7 @@ function Dashboard(props) {
         }}
       >
         <Toolbar />
-        
+        <Outlet />
       </Box>
     </Box>
   );
