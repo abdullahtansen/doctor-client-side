@@ -29,9 +29,10 @@ const Login = () => {
     e.preventDefault();
   };
   const handleGoogleSignIn =()=>{
-    signInWithGoogle(location)
-    navigate('/')
+    signInWithGoogle(location);
+    navigate('/');
   }
+
   return (
     <Container>
       <Grid container spacing={2}>

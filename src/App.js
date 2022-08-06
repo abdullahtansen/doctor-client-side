@@ -11,6 +11,7 @@ import MyProfile from "./Pages/Dashboard/Dashboard/MyProfile/MyProfile";
 import MakeAdmin from "./Pages/Dashboard/Dashboard/MakeAdmin/MakeAdmin";
 import DashBoardHome from "./Pages/Dashboard/Dashboard/DashBoardHome/DashBoardHome";
 import AddDoctor from "./Pages/Dashboard/Dashboard/AddDoctor/AddDoctor";
+import AdminRoute from "./Login/Login/AdminRoute/AdminRoute";
 
 function App() {
   return (
@@ -38,9 +39,20 @@ function App() {
           }
         >
        <Route index element={<MyProfile />} /> 
-           <Route path="makeAdmin" element={<MakeAdmin />} />
+           {/* <Route path="makeAdmin"
+           element={<privateRoute>
+            <MakeAdmin />
+           </privateRoute>} /> */}
            <Route path="dashboardHome" element={<DashBoardHome />} />
           <Route path="addDoctor" element={<AddDoctor />} />
+          <Route
+            path="makeAdmin"
+            element={
+              <AdminRoute>
+                <MakeAdmin />
+              </AdminRoute>
+            }
+          />
           {/*<Route path="updateProfile" element={<UpdateProfile />} />
           <Route path="payment/:id" element={<Payment />} />
           <Route path="manageProducts" element={<ManageProducts />} />

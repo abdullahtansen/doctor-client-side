@@ -9,14 +9,18 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 const Appointments = ({ date }) => {
-    const {user} = useAuth();
+    const {user,token} = useAuth();
     const [appointments,setAppointments] = useState([]);
     useEffect( ()=>{
-        const url = `http://localhost:5000/appointments?email=${user.email}&date=${date}`
-        fetch(url)
+        const url = `https://frozen-waters-54579.herokuapp.com/appointments?email=${user.email}&date=${date}`
+        fetch(url,{
+          headers:{
+            'authorizaion': `Bearer ${token}`
+          }
+        })
         .then(res=>res.json())
         .then(data=>setAppointments(data))
-    },[])
+    },[user.email,date,token]);
     return (
         <div>
             <h2>Appointments:  {appointments.length}</h2>
@@ -47,7 +51,7 @@ const Appointments = ({ date }) => {
         </TableBody>
       </Table>
     </TableContainer>
-        </div>
+    </div>
     );
 };
 

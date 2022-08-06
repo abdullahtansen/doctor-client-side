@@ -47,7 +47,7 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date,setBookin
       serviceName:name,
       date: date.toLocaleDateString()
     }
-    fetch('http://localhost:5000/appointments', {
+    fetch('https://frozen-waters-54579.herokuapp.com/appointments', {
       method: "POST",
       headers:{
         'content-type':'application/json'

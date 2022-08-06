@@ -9,16 +9,16 @@ import List from "@mui/material/List";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Button} from "@mui/material";
+import { Button } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 
 const drawerWidth = 200;
 
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
- 
-
+  const {admin} = useAuth();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -27,39 +27,33 @@ function Dashboard(props) {
     <div>
       <Toolbar />
       <Link style={{ textDecoration: "none" }} to="/appointment">
-              <Button variant="contained" color="inherit">Appointment</Button>
-            </Link>
+        <Button variant="contained" color="inherit">
+          Appointment
+        </Button>
+      </Link>
       <List>
-      <div className="drawer-side">
-        <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
-        <ul className="menu p-4 overflow-y-auto w-50 bg-base-100 text-base-content">
-        <li>
-            <Link to='/dashboard'>My Profile</Link>
-          </li>
-        <>
+        <div className="drawer-side">
+          <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
+          <ul className="menu p-4 overflow-y-auto w-50 bg-base-100 text-base-content">
             <li>
-            <Link to='/dashboard/dashboardHome'>DashBoard</Link>
-          </li>
-          <li>
-            <Link to='/dashboard/addDoctor'>Add Doctor</Link>
-          </li></>
-          
-         <>
+              <Link to="/dashboard">My Profile</Link>
+            </li>
+            <>
+              <li>
+                <Link to="/dashboard/dashboardHome">DashBoard</Link>
+              </li>
+            </>
+            <>
+           {admin && <Box>
             <li>
-            <Link to='/dashboard/manageAllOrders'>Manage All Orders</Link>
-          </li>
-          <li>
-            <Link to='/dashboard/addProduct'>Add A Product</Link>
-          </li>
-          <li>
-            <Link to='/dashboard/makeAdmin'>Make Admin</Link>
-          </li>
-          <li>
-            <Link to='/dashboard/manageProducts'>Manage Products</Link>
-          </li>
-          </>
-        </ul>
-      </div>
+                <Link to="/dashboard/addDoctor">Add Doctor</Link>
+              </li>
+              <li>
+                <Link to="/dashboard/makeAdmin">Make Admin</Link>
+              </li></Box>}
+            </>
+          </ul>
+        </div>
       </List>
     </div>
   );
@@ -91,7 +85,6 @@ function Dashboard(props) {
             Dashboard
           </Typography>
         </Toolbar>
-      
       </AppBar>
       <Box
         component="nav"
